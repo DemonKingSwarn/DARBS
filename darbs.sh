@@ -62,7 +62,7 @@ preinstalling() {
 
 adduserandpass() {
     whiptail --infobox "Adding user \"$name\" ..." 7 50
-    useradd -a -g wheel -s /bin/zsh "$name" >/dev/null 2>&1 || 
+    useradd -m -a -g wheel -s /bin/zsh "$name" >/dev/null 2>&1 || 
         usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
     export repodir="/home/$name/.local/src"
     mkdir -p "$repodir"
