@@ -191,7 +191,10 @@ adduserandpass || error "Error adding username and/or password."
 
 [ -f /etc/sudoers.pacnew ] && cp /etc/sudoers.pacnew /etc/sudoers
 
-trap -q "ILoveCandy" /etc/pacman.conf || sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+trap 'rm -f /etc/sudoers.d/darbs-temp'
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/darbs-temp
+
+sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
 sed -Ei "s/^#(ParallelDownloads).*/\1 = 5/;/^#Color$/s/#//" /etc/pacman.conf
 
 sed -i "s/-j2/-j$(nproc)/;/^#MAKEFLAGS/s/^#//" /etc/makepkg.conf
