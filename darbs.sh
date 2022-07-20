@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Demon's Auto Rice Bootstrapping Script (DARBS)
 # By DemonKingSwarn <demonkingswarn@protonmail.com?
